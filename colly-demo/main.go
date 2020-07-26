@@ -20,6 +20,7 @@ func main() {
 	)
 	//随机UserAgent
 	extensions.RandomUserAgent(c)
+	//并发设置为15，随机的请求延迟1s
 	c.Limit(&colly.LimitRule{
 		DomainGlob:  "*",
 		RandomDelay: 1 * time.Second,
@@ -32,7 +33,7 @@ func main() {
 	}
 	c.SetProxyFunc(rp)
 	StepParent(c)
-	c.Visit("https://stockx.com/")
+	c.Visit("入口url")
 	c.Wait()
 }
 
