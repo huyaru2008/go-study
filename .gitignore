@@ -1,0 +1,13 @@
+/bazel-*
+vendor/
+
+# emacs
+.projectile
+
+# vim
+*.swp
+
+.idea/
+.cover/
+.vscode/
+/gl-code-quality-report.json
