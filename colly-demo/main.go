@@ -9,7 +9,7 @@ import (
 	"github.com/gocolly/colly/debug"
 	"github.com/gocolly/colly/extensions"
 	"github.com/gocolly/colly/proxy"
-	"github.com/hsyan2008/go-logger"
+	"github.com/sirupsen/logrus"
 )
 
 func main() {
@@ -29,7 +29,7 @@ func main() {
 	//代理
 	rp, err := proxy.RoundRobinProxySwitcher("代理url")
 	if err != nil {
-		logger.Error(err, "代理错误", err.Error())
+		logrus.Info("代理错误", err.Error())
 	}
 	c.SetProxyFunc(rp)
 	StepParent(c)
@@ -56,7 +56,7 @@ func StepParent(c *colly.Collector) {
 
 }
 
-//重试
+// 重试
 func Retry(r *colly.Request, count int) error {
 	key := fmt.Sprintf("err_req_%s", r.URL.String())
 	var et int
